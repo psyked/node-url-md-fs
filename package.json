@@ -1,0 +1,25 @@
+{
+  "name": "url-md-fs",
+  "version": "0.0.0",
+  "description": "Enter an URL, convert it to Markdown, save it to the File system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psyked/node-url-md-fs.git"
+  },
+  "keywords": [
+    "markdown",
+    "filesystem",
+    "convert",
+    "download"
+  ],
+  "author": "James Ford <psyked84@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/psyked/node-url-md-fs/issues"
+  },
+  "homepage": "https://github.com/psyked/node-url-md-fs#readme"
+}
