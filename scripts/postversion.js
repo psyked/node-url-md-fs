@@ -2,7 +2,7 @@ const sh = require('shelljs')
 
 const { version } = require('../package.json')
 
-sh.exec(`git commit package.json yarn.lock CHANGELOG.md -m "Version ${version}"`)
+sh.exec(`git commit package.json yarn.lock CHANGELOG.md -m "Release version bump for v${version}"`)
 sh.echo()
 
 sh.echo(`git tag v${version}`)
