@@ -9,18 +9,19 @@ const processMarkdown = require('./process-markdown')
 
 module.exports = async sourceURL => {
   const response = await new Promise((resolve, reject) => {
-    request(
+    return request(
       {
         uri: sourceURL,
         method: 'GET',
       },
       (err, httpResponse, body) => {
-        if (err) return reject(err)
+        if (err) reject(err)
 
         const asMarkdown = processMarkdown(body)
 
         fs.writeFileSync(path.resolve(__dirname, '../output.md'), asMarkdown)
-        return resolve(sourceURL)
+
+        resolve(sourceURL)
       }
     )
   })

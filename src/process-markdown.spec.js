@@ -1,9 +1,15 @@
 const method = require('./process-markdown')
 
-const htmlStub = require('../tests/stub.html.js')
-const markdownStub = require('../tests/stub.md.js')
+const htmlHTML = require('../tests/cern.html')
+const htmlMD = require('../tests/cern.md')
 
-test('html should be converted to expected markdown', async () => {
-  const processed = await method(htmlStub)
-  expect(processed).toEqual(markdownStub)
+test('html should be converted to expected markdown', () => {
+  expect(method(htmlHTML)).toEqual(htmlMD)
+})
+
+const mediumHTML = require('../tests/medium.html')
+const mediumMD = require('../tests/medium.md')
+
+test('medium post should be converted to expected markdown', () => {
+  expect(method(mediumHTML)).toEqual(mediumMD)
 })

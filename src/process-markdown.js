@@ -1,16 +1,10 @@
-const toMarkdown = require('to-markdown')
+const TurndownService = require('turndown')
+const turndownService = new TurndownService({ headingStyle: 'atx' })
 const cheerio = require('cheerio')
-
-const converters = require('./markdown-config/converters')
 
 module.exports = body => {
   let $ = cheerio.load(body)
-  let html = $('.postArticle-content').html() || ''
+  let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
-  html = html.replace(/\s/gi, ' ')
-
-  return toMarkdown(html, {
-    gfm: true,
-    converters,
-  })
+  return turndownService.turndown(html)
 }
