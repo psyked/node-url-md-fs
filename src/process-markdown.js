@@ -21,7 +21,8 @@ module.exports = (body, { sourceURL } = {}) => {
     constructedFrontMatter += `${key}: ${metadata[key]}\n`
   })
 
-  constructedFrontMatter = `path: ${extractFilename(sourceURL)}\n` + constructedFrontMatter
+  constructedFrontMatter =
+    `path: ${extractFilename(sourceURL)}\n` + constructedFrontMatter
 
   return '---\n' + constructedFrontMatter + '---\n' + markdown
 }
