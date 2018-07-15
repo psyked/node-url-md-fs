@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.3.2
+- Initial support for custom remapping of frontmatter properties
+
 ## v0.3.1
 - Include publish times as a date, instead of a string in frontmatter
 
