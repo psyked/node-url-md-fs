@@ -20,7 +20,11 @@ module.exports = (body, { sourceURL, outputPath = '' } = {}) => {
   )
 
   keys.forEach(key => {
-    constructedFrontMatter += `${key}: "${metadata[key]}"\n`
+    if (key === 'article:published_time') {
+      constructedFrontMatter += `${key}: ${metadata[key]}\n`
+    } else {
+      constructedFrontMatter += `${key}: "${metadata[key]}"\n`
+    }
   })
 
   constructedFrontMatter =

@@ -5,26 +5,15 @@ description: "I’ve recently worked with the team behind the Derby University w
 og:title: "Fluid widths in responsive websites. – James Ford – Medium"
 og:url: "https://medium.com/@psyked/fluid-widths-in-responsive-websites-2a02499295d9"
 og:image: "https://cdn-images-1.medium.com/max/1200/1*Key4MifVtUocntQlHnMM9g.jpeg"
-fb:app_id: "542599432471018"
 og:description: "Front End Design Principle Rambles #1"
 twitter:description: "Front End Design Principle Rambles #1"
 twitter:image:src: "https://cdn-images-1.medium.com/max/1200/1*Key4MifVtUocntQlHnMM9g.jpeg"
 author: "James Ford"
 og:type: "article"
 twitter:card: "summary_large_image"
-article:publisher: "https://www.facebook.com/medium"
 article:author: "https://medium.com/@psyked"
-article:published_time: "2018-07-11T11:11:46.274Z"
+article:published_time: 2018-07-11T11:11:46.274Z
 twitter:creator: "@psyked"
-twitter:site: "@Medium"
-og:site_name: "Medium"
-al:ios:app_name: "Medium"
-al:ios:app_store_id: "828256236"
-al:android:package: "com.medium.reader"
-al:android:app_name: "Medium"
-al:ios:url: "medium://p/2a02499295d9"
-al:android:url: "medium://p/2a02499295d9"
-al:web:url: "https://medium.com/@psyked/fluid-widths-in-responsive-websites-2a02499295d9"
 ---
 * * *
 
