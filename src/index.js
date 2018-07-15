@@ -13,7 +13,7 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
       (err, httpResponse, body) => {
         if (err) reject(err)
 
-        const asMarkdown = processMarkdown(body)
+        const asMarkdown = processMarkdown(body, {sourceURL})
 
         if (outputPath) {
           fs.writeFileSync(

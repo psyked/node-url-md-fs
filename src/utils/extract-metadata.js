@@ -9,7 +9,7 @@ module.exports = htmlSource => {
     const property = $(tag).attr('property')
     const content = $(tag).attr('content')
     if ((name || property) && content) {
-      extractedProps[(name || property)] = content
+      extractedProps[name || property] = content
     }
   })
   return { ...extractedProps }
