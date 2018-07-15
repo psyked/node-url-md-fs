@@ -1,4 +1,4 @@
-const sourceHTML = require('../../tests/medium.html')
+const sourceHTML = require('../../../tests/medium.html')
 const method = require('./extract-metadata')
 test('metadata items are extracted from html source', () => {
   // act

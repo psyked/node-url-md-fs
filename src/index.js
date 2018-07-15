@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 const request = require('request')
-const processMarkdown = require('./process-markdown')
-const extractFilename = require('./utils/extract-filename')
+const processMarkdown = require('./utils/frontmatter/process-markdown')
+const extractFilename = require('./utils/frontmatter/extract-filename')
 
 const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
   const response = await new Promise((resolve, reject) => {

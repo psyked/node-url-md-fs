@@ -1,9 +1,9 @@
 const cheerio = require('cheerio')
 const TurndownService = require('turndown')
 const turndownService = new TurndownService({ headingStyle: 'atx' })
-const metaParser = require('./utils/extract-metadata')
-const extractFilename = require('./utils/extract-filename')
-const commonFilters = require('./utils/common-metadata-filters')
+const metaParser = require('./frontmatter/extract-metadata')
+const extractFilename = require('./extract-filename')
+const commonFilters = require('./frontmatter/common-metadata-filters')
 
 module.exports = (body, { sourceURL } = {}) => {
   let $ = cheerio.load(body)

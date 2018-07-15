@@ -1,3 +1,6 @@
+/**
+ * Common meta property keys to ignore when populating markdown frontmatter
+ */
 module.exports = [
   'theme-color',
   'twitter:app:name:iphone',
