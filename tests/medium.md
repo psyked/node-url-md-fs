@@ -1,12 +1,40 @@
+---
+path: fluid-widths-in-responsive-websites-2a02499295d9
+title: Fluid widths in responsive websites. – James Ford – Medium
+description: I’ve recently worked with the team behind the Derby University website [https://www.derby.ac.uk/] and one of the details that I really like about the implementation of the design is that it features…
+og:title: Fluid widths in responsive websites. – James Ford – Medium
+og:url: https://medium.com/@psyked/fluid-widths-in-responsive-websites-2a02499295d9
+og:image: https://cdn-images-1.medium.com/max/1200/1*Key4MifVtUocntQlHnMM9g.jpeg
+fb:app_id: 542599432471018
+og:description: Front End Design Principle Rambles #1
+twitter:description: Front End Design Principle Rambles #1
+twitter:image:src: https://cdn-images-1.medium.com/max/1200/1*Key4MifVtUocntQlHnMM9g.jpeg
+author: James Ford
+og:type: article
+twitter:card: summary_large_image
+article:publisher: https://www.facebook.com/medium
+article:author: https://medium.com/@psyked
+article:published_time: 2018-07-11T11:11:46.274Z
+twitter:creator: @psyked
+twitter:site: @Medium
+og:site_name: Medium
+al:ios:app_name: Medium
+al:ios:app_store_id: 828256236
+al:android:package: com.medium.reader
+al:android:app_name: Medium
+al:ios:url: medium://p/2a02499295d9
+al:android:url: medium://p/2a02499295d9
+al:web:url: https://medium.com/@psyked/fluid-widths-in-responsive-websites-2a02499295d9
+---
 * * *
 
 # Fluid widths in responsive websites.
 
-## Front End Design Principle Rambles #1
+## Front End Design Principle Rambles #1
 
 I’ve recently worked with the team behind the Derby University website \[[https://www.derby.ac.uk/](https://www.derby.ac.uk/)\] and one of the details that I really like about the implementation of the design is that it features more than just fluid widths, it also features fluid font sizes. I’ll get onto what that means in another post, but for now I want to talk a little about using fluid widths.
 
-### Fluid widths — Pros & Cons
+### Fluid widths — Pros & Cons
 
 #### Pros
 
@@ -25,8 +53,6 @@ Maximum and minimum text line lengths are recommended for readability, but stick
 
 Media queries and fluid gutters between elements are popular strategies for coping with the challenge of matching fluid widths and fixed font sizes, but they’re often just clever tricks to fill the gaps with whitespace. Wouldn’t it be nicer if the font sizes scaled with the page instead?
 
-![](https://cdn-images-1.medium.com/freeze/max/60/1*Key4MifVtUocntQlHnMM9g.jpeg?q=20)
+![](https://cdn-images-1.medium.com/max/2000/1*Key4MifVtUocntQlHnMM9g.jpeg)
 
-<img class="progressiveMedia-noscript js-progressiveMedia-inner" src="https://cdn-images-1.medium.com/max/2000/1*Key4MifVtUocntQlHnMM9g.jpeg">
-
-Photo by [chuttersnap](https://unsplash.com/photos/xjZl9zm6Sds?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/whitespace?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+Photo by [chuttersnap](https://unsplash.com/photos/xjZl9zm6Sds?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/whitespace?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

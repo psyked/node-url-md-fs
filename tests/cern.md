@@ -1,3 +1,6 @@
+---
+path: 
+---
 http://info.cern.ch
 
 # http://info.cern.ch - home of the first website
