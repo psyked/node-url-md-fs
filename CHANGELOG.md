@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.2.1
+- Output all frontmatter as strings instead of raw values to avoid issues parsing it in other tools
+
 ## v0.2.0
 - Support extracting frontmatter in markdown output
 
