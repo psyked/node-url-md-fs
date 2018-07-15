@@ -6,9 +6,10 @@ module.exports = htmlSource => {
   const extractedProps = {}
   metaTags.each((index, tag) => {
     const name = $(tag).attr('name')
+    const property = $(tag).attr('property')
     const content = $(tag).attr('content')
-    if (name && content) {
-      extractedProps[name] = content
+    if ((name || property) && content) {
+      extractedProps[(name || property)] = content
     }
   })
   return { ...extractedProps }
