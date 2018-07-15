@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 const request = require('request')
-const processMarkdown = require('./utils/frontmatter/process-markdown')
-const extractFilename = require('./utils/frontmatter/extract-filename')
+const processMarkdown = require('./utils/process-markdown')
+const extractFilename = require('./utils/extract-filename')
 
 const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
   const response = await new Promise((resolve, reject) => {
@@ -18,7 +18,9 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
         const filename = extractFilename(sourceURL)
 
         if (outputPath) {
-          fs.mkdirSync(path.resolve(__dirname, outputPath, filename))
+          if (!fs.existsSync(path.resolve(__dirname, outputPath, filename))) {
+            fs.mkdirSync(path.resolve(__dirname, outputPath, filename))
+          }
           fs.writeFileSync(
             path.resolve(__dirname, outputPath, filename, 'index.md'),
             asMarkdown
