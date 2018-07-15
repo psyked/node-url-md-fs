@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.3.1
+- Include publish times as a date, instead of a string in frontmatter
+
 ## v0.3.0
 - Download image assets and reference them directly
 - Fix CLI error
