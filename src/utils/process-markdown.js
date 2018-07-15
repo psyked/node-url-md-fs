@@ -7,7 +7,7 @@ const extractFilename = require('./extract-filename')
 const commonFilters = require('./frontmatter/common-metadata-filters')
 const assetDownloader = require('./asset/download-asset')
 
-module.exports = (body, { sourceURL, outputPath='' } = {}) => {
+module.exports = (body, { sourceURL, outputPath = '' } = {}) => {
   let $ = cheerio.load(body)
   let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
