@@ -14,6 +14,7 @@ twitter:card: "summary_large_image"
 article:author: "https://medium.com/@psyked"
 article:published_time: 2018-07-11T11:11:46.274Z
 twitter:creator: "@psyked"
+date: 2018-07-11T11:11:46.274Z
 ---
 * * *
 

@@ -5,13 +5,14 @@ const turndownService = new TurndownService({ headingStyle: 'atx' })
 const metaParser = require('./frontmatter/extract-metadata')
 const extractFilename = require('./extract-filename')
 const commonFilters = require('./frontmatter/common-metadata-filters')
+const remapKeys = require('./frontmatter/remap-frontmatter-keys')
 const assetDownloader = require('./asset/download-asset')
 
 module.exports = (body, { sourceURL, outputPath = '' } = {}) => {
   let $ = cheerio.load(body)
   let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
-  const metadata = metaParser(body)
+  const metadata = remapKeys(metaParser(body))
   const markdown = turndownService.turndown(html)
   let constructedFrontMatter = ''
 
@@ -20,7 +21,7 @@ module.exports = (body, { sourceURL, outputPath = '' } = {}) => {
   )
 
   keys.forEach(key => {
-    if (key === 'article:published_time') {
+    if (key === 'article:published_time' || key === 'date') {
       constructedFrontMatter += `${key}: ${metadata[key]}\n`
     } else {
       constructedFrontMatter += `${key}: "${metadata[key]}"\n`
