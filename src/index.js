@@ -4,7 +4,10 @@ const request = require('request')
 const processMarkdown = require('./utils/process-markdown')
 const extractFilename = require('./utils/extract-filename')
 
-const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
+const convertURLToMarkdown = async (
+  sourceURL,
+  { outputPath } = {}
+) => {
   const response = await new Promise((resolve, reject) => {
     return request(
       {
@@ -14,9 +17,10 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
       (err, httpResponse, body) => {
         if (err) reject(err)
 
-        const asMarkdown = processMarkdown(body, { sourceURL })
+        const asMarkdown = processMarkdown(body, { sourceURL, outputPath })
         const filename = extractFilename(sourceURL)
 
+        console.log(path.resolve(__dirname, outputPath, filename))
         if (outputPath) {
           if (!fs.existsSync(path.resolve(__dirname, outputPath, filename))) {
             fs.mkdirSync(path.resolve(__dirname, outputPath, filename))
@@ -35,7 +39,7 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
 }
 
 const inputURL = process.argv[2]
-const outputPath = process.argv[3] || __dirname
+const outputPath = process.argv[3] || path.resolve(__dirname, '../output/')
 
 if (!inputURL) {
   console.error('No URL specified')

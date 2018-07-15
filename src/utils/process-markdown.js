@@ -1,11 +1,13 @@
+const path = require('path')
 const cheerio = require('cheerio')
 const TurndownService = require('turndown')
 const turndownService = new TurndownService({ headingStyle: 'atx' })
 const metaParser = require('./frontmatter/extract-metadata')
 const extractFilename = require('./extract-filename')
 const commonFilters = require('./frontmatter/common-metadata-filters')
+const assetDownloader = require('./asset/download-asset')
 
-module.exports = (body, { sourceURL } = {}) => {
+module.exports = (body, { sourceURL, outputPath } = {}) => {
   let $ = cheerio.load(body)
   let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
@@ -23,6 +25,25 @@ module.exports = (body, { sourceURL } = {}) => {
 
   constructedFrontMatter =
     `path: ${extractFilename(sourceURL)}\n` + constructedFrontMatter
+
+  const regex = /!\[.*\]\((.*)\)/g
+  // const result = regex.exec(markdown)
+  const result = markdown.match(regex)
+  // console.log(result)
+  const matches = []
+  while ((match = regex.exec(markdown)) && matches.push(match[1])) {}
+  console.log(matches)
+
+  // debugger;
+  const assetsToDownload = matches
+  if (assetsToDownload) {
+    assetsToDownload.forEach(asset => {
+      assetDownloader({
+        url: asset,
+        dest: path.resolve(__dirname, outputPath, extractFilename(sourceURL))
+      })
+    })
+  }
 
   return '---\n' + constructedFrontMatter + '---\n' + markdown
 }
