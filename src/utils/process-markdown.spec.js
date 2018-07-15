@@ -1,9 +1,11 @@
 const method = require('./process-markdown')
 
 test('html should be converted to expected markdown', () => {
-  expect(method(require('../../tests/cern.html'), { sourceURL: 'http://info.cern.ch/' })).toEqual(
-    require('../../tests/cern.md')
-  )
+  expect(
+    method(require('../../tests/cern.html'), {
+      sourceURL: 'http://info.cern.ch/'
+    })
+  ).toEqual(require('../../tests/cern.md'))
 })
 
 test('medium post should be converted to expected markdown', () => {

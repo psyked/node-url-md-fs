@@ -18,7 +18,7 @@ module.exports = (body, { sourceURL } = {}) => {
   )
 
   keys.forEach(key => {
-    constructedFrontMatter += `${key}: ${metadata[key]}\n`
+    constructedFrontMatter += `${key}: "${metadata[key]}"\n`
   })
 
   constructedFrontMatter =
