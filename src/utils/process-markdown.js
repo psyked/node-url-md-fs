@@ -7,7 +7,7 @@ const extractFilename = require('./extract-filename')
 const commonFilters = require('./frontmatter/common-metadata-filters')
 const assetDownloader = require('./asset/download-asset')
 
-module.exports = (body, { sourceURL, outputPath } = {}) => {
+module.exports = (body, { sourceURL, outputPath='' } = {}) => {
   let $ = cheerio.load(body)
   let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
@@ -27,14 +27,15 @@ module.exports = (body, { sourceURL, outputPath } = {}) => {
     `path: ${extractFilename(sourceURL)}\n` + constructedFrontMatter
 
   const regex = /!\[.*\]\((.*)\)/g
-  // const result = regex.exec(markdown)
-  const result = markdown.match(regex)
-  // console.log(result)
   const matches = []
+  let match
   while ((match = regex.exec(markdown)) && matches.push(match[1])) {}
-  console.log(matches)
 
-  // debugger;
+  const markdownWithRelativePaths = markdown.replace(
+    /(!\[.*?\]\()(.*)\/(.*?)(\))/g,
+    '$1$3$4'
+  )
+
   const assetsToDownload = matches
   if (assetsToDownload) {
     assetsToDownload.forEach(asset => {
@@ -45,5 +46,5 @@ module.exports = (body, { sourceURL, outputPath } = {}) => {
     })
   }
 
-  return '---\n' + constructedFrontMatter + '---\n' + markdown
+  return '---\n' + constructedFrontMatter + '---\n' + markdownWithRelativePaths
 }

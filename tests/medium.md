@@ -53,6 +53,6 @@ Maximum and minimum text line lengths are recommended for readability, but stick
 
 Media queries and fluid gutters between elements are popular strategies for coping with the challenge of matching fluid widths and fixed font sizes, but they’re often just clever tricks to fill the gaps with whitespace. Wouldn’t it be nicer if the font sizes scaled with the page instead?
 
-![](https://cdn-images-1.medium.com/max/2000/1*Key4MifVtUocntQlHnMM9g.jpeg)
+![](1*Key4MifVtUocntQlHnMM9g.jpeg)
 
 Photo by [chuttersnap](https://unsplash.com/photos/xjZl9zm6Sds?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/search/photos/whitespace?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)

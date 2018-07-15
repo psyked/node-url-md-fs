@@ -4,10 +4,7 @@ const request = require('request')
 const processMarkdown = require('./utils/process-markdown')
 const extractFilename = require('./utils/extract-filename')
 
-const convertURLToMarkdown = async (
-  sourceURL,
-  { outputPath } = {}
-) => {
+const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
   const response = await new Promise((resolve, reject) => {
     return request(
       {
