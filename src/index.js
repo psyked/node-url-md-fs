@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const request = require('request')
 const processMarkdown = require('./process-markdown')
+const extractFilename = require('./utils/extract-filename')
 
 const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
   const response = await new Promise((resolve, reject) => {
@@ -14,10 +15,12 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
         if (err) reject(err)
 
         const asMarkdown = processMarkdown(body, {sourceURL})
+        const filename = extractFilename(sourceURL)
 
         if (outputPath) {
+          fs.mkdirSync(path.resolve(__dirname, outputPath, filename))
           fs.writeFileSync(
-            path.resolve(__dirname, outputPath, 'output.md'),
+            path.resolve(__dirname, outputPath, filename, 'index.md'),
             asMarkdown
           )
         }
