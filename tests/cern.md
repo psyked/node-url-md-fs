@@ -1,5 +1,6 @@
 ---
-path: 
+path: /blog//
+title: ""
 ---
 http://info.cern.ch
 
