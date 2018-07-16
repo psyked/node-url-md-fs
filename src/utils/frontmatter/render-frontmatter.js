@@ -1,17 +1,14 @@
 const extractFilename = require('../extract-filename')
-const commonFilters = require('./common-metadata-filters')
 
 module.exports = (frontmatter, sourceURL) => {
   let constructedFrontMatter = ''
 
-  const keys = Object.keys(frontmatter).filter(
-    key => commonFilters.indexOf(key) === -1
-  )
+  const keys = Object.keys(frontmatter)
 
   constructedFrontMatter += `path: /blog/${extractFilename(sourceURL)}/\n`
 
   keys.forEach(key => {
-    if (key === 'article:published_time' || key === 'date') {
+    if (key === 'published_time' || key === 'date') {
       constructedFrontMatter += `${key}: ${frontmatter[key]}\n`
     } else {
       constructedFrontMatter += `${key}: "${frontmatter[key]}"\n`

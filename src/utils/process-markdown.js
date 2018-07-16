@@ -9,6 +9,7 @@ const extractFilename = require('./extract-filename')
 const remapKeys = require('./frontmatter/remap-frontmatter-keys')
 const renderFrontmatter = require('./frontmatter/render-frontmatter')
 const assetDownloader = require('./asset/download-asset')
+const commonFilters = require('./frontmatter/common-metadata-filters')
 
 const turndownService = new TurndownService({
   headingStyle: 'atx',
@@ -16,8 +17,16 @@ const turndownService = new TurndownService({
 })
 
 const remapTitles = frontmatter => {
-  const filteredFM = { ...frontmatter }
-  filteredFM['og:title'] = undefined
+  const filteredFM = {}
+  for (let key in frontmatter) {
+    if (commonFilters.indexOf(key) === -1) {
+      const value = frontmatter[key]
+      const asArray = key.split(':')
+      const newKey = asArray.pop()
+      filteredFM[newKey] = value
+    }
+  }
+  // filteredFM['og:title'] = undefined
   return {
     ...filteredFM,
     title: filteredFM['title'].replace(/(.*?) – [\w\s]*? – Medium/g, '$1')

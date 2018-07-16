@@ -21,5 +21,7 @@ module.exports = [
   'al:android:app_name',
   'al:ios:url',
   'al:android:url',
-  'al:web:url'
+  'al:web:url',
+  'type',
+  'card'
 ]
