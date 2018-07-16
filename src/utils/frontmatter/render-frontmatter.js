@@ -8,10 +8,20 @@ module.exports = (frontmatter, sourceURL) => {
   constructedFrontMatter += `path: /blog/${extractFilename(sourceURL)}/\n`
 
   keys.forEach(key => {
-    if (key === 'published_time' || key === 'date') {
-      constructedFrontMatter += `${key}: ${frontmatter[key]}\n`
-    } else {
-      constructedFrontMatter += `${key}: "${frontmatter[key]}"\n`
+    if (typeof frontmatter[key] === 'string') {
+      if (!isNaN(Date.parse(frontmatter[key]))) {
+        constructedFrontMatter += `${key}: ${frontmatter[key]}\n`
+      } else {
+        constructedFrontMatter += `${key}: "${frontmatter[key]}"\n`
+      }
+    } else if (
+      typeof frontmatter[key] === 'object' &&
+      frontmatter[key].length
+    ) {
+      constructedFrontMatter += `${key}:\n`
+      frontmatter[key].map(value => {
+        constructedFrontMatter += `- ${value}\n`
+      })
     }
   })
 
