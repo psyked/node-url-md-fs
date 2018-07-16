@@ -19,5 +19,7 @@ test('render frontmatter with tags', () => {
   // act
   const output = render(config)
   // assert
-  expect(output).toEqual(`---\npath: /blog//\ntags:\n- value\n- value1\n- value2\n---\n`)
+  expect(output).toEqual(
+    `---\npath: /blog//\ntags:\n- value\n- value1\n- value2\n---\n`
+  )
 })
