@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0
+- Parse tags from Medium posts to frontmatter
+- Improve detection of dates vs strings in frontmatter
+
 ## v0.3.3
 - Improve the frontmatter extraction for Medium blog posts
 
