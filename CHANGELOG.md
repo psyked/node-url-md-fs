@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.3.3
+- Improve the frontmatter extraction for Medium blog posts
+
 ## v0.3.2
 - Initial support for custom remapping of frontmatter properties
 
