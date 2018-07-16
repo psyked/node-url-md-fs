@@ -1,55 +1,58 @@
+// external libs
 const path = require('path')
 const cheerio = require('cheerio')
 const TurndownService = require('turndown')
-const turndownService = new TurndownService({ headingStyle: 'atx' })
+
+// internal libs
 const metaParser = require('./frontmatter/extract-metadata')
 const extractFilename = require('./extract-filename')
-const commonFilters = require('./frontmatter/common-metadata-filters')
 const remapKeys = require('./frontmatter/remap-frontmatter-keys')
+const renderFrontmatter = require('./frontmatter/render-frontmatter')
 const assetDownloader = require('./asset/download-asset')
+
+const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  hr: '---'
+})
+
+const remapTitles = frontmatter => {
+  const filteredFM = { ...frontmatter }
+  filteredFM['og:title'] = undefined
+  return {
+    ...filteredFM,
+    title: filteredFM['title'].replace(/(.*?) – [\w\s]*? – Medium/g, '$1')
+  }
+}
+
+const postProcess = output => {
+  return output.replace(/---\n---/g, '---')
+}
 
 module.exports = (body, { sourceURL, outputPath = '' } = {}) => {
   let $ = cheerio.load(body)
   let html = $('.postArticle-content').html() || $('main,body').html() || ''
 
-  const metadata = remapKeys(metaParser(body))
+  const metadata = remapTitles(remapKeys(metaParser(body)))
   const markdown = turndownService.turndown(html)
-  let constructedFrontMatter = ''
-
-  const keys = Object.keys(metadata).filter(
-    key => commonFilters.indexOf(key) === -1
-  )
-
-  keys.forEach(key => {
-    if (key === 'article:published_time' || key === 'date') {
-      constructedFrontMatter += `${key}: ${metadata[key]}\n`
-    } else {
-      constructedFrontMatter += `${key}: "${metadata[key]}"\n`
-    }
-  })
-
-  constructedFrontMatter =
-    `path: ${extractFilename(sourceURL)}\n` + constructedFrontMatter
 
   const regex = /!\[.*\]\((.*)\)/g
-  const matches = []
+  const assetsToDownload = []
   let match
-  while ((match = regex.exec(markdown)) && matches.push(match[1])) {}
+  while ((match = regex.exec(markdown)) && assetsToDownload.push(match[1])) {}
+
+  assetsToDownload.forEach(asset => {
+    assetDownloader({
+      url: asset,
+      dest: path.resolve(__dirname, outputPath, extractFilename(sourceURL))
+    })
+  })
 
   const markdownWithRelativePaths = markdown.replace(
     /(!\[.*?\]\()(.*)\/(.*?)(\))/g,
     '$1$3$4'
   )
 
-  const assetsToDownload = matches
-  if (assetsToDownload) {
-    assetsToDownload.forEach(asset => {
-      assetDownloader({
-        url: asset,
-        dest: path.resolve(__dirname, outputPath, extractFilename(sourceURL))
-      })
-    })
-  }
-
-  return '---\n' + constructedFrontMatter + '---\n' + markdownWithRelativePaths
+  return postProcess(
+    renderFrontmatter(metadata, sourceURL) + markdownWithRelativePaths
+  )
 }
