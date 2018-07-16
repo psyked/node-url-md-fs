@@ -29,7 +29,10 @@ const remapTitles = frontmatter => {
   // filteredFM['og:title'] = undefined
   return {
     ...filteredFM,
-    title: (filteredFM['title']||'').replace(/(.*?) – [\w\s]*? – Medium/g, '$1')
+    title: (filteredFM['title'] || '').replace(
+      /(.*?) – [\w\s]*? – Medium/g,
+      '$1'
+    )
   }
 }
 
