@@ -22,6 +22,6 @@ module.exports = [
   'al:ios:url',
   'al:android:url',
   'al:web:url',
-  'type',
-  'card'
+  'twitter:type',
+  'og:card'
 ]

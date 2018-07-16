@@ -1,5 +1,7 @@
 const extractFilename = require('../extract-filename')
 
+const isoPattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+
 module.exports = (frontmatter, sourceURL) => {
   let constructedFrontMatter = ''
 
@@ -9,7 +11,7 @@ module.exports = (frontmatter, sourceURL) => {
 
   keys.forEach(key => {
     if (typeof frontmatter[key] === 'string') {
-      if (!isNaN(Date.parse(frontmatter[key]))) {
+      if (isoPattern.test(frontmatter[key])) {
         constructedFrontMatter += `${key}: ${frontmatter[key]}\n`
       } else {
         constructedFrontMatter += `${key}: "${frontmatter[key]}"\n`
