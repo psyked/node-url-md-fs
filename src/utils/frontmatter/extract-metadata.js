@@ -14,5 +14,13 @@ module.exports = htmlSource => {
       extractedProps[name || property] = content
     }
   })
-  return { ...extractedProps }
+  const tagLinks = $('.tags a')
+  const tags = []
+  tagLinks.each((index, tag) => {
+    tags.push($(tag).text())
+  })
+  return {
+    ...extractedProps,
+    tags
+  }
 }
