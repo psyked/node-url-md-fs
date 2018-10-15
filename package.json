@@ -2,9 +2,9 @@
   "name": "url-md-fs",
   "version": "0.5.0",
   "description": "Enter an URL, convert it to Markdown, save it to the File system",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
-    "url-md-fs": "./index.js"
+    "url-md-fs": "./src/index.js"
   },
   "scripts": {
     "test": "jest",

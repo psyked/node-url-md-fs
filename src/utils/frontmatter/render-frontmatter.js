@@ -1,6 +1,6 @@
 const extractFilename = require('../extract-filename')
 
-const isoPattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+const isoPattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/
 
 module.exports = (frontmatter, sourceURL) => {
   let constructedFrontMatter = ''
