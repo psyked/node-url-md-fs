@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.5.2
+- Really, really fix the executible this time
+
 ## v0.5.1
 - Fix paths to the executible
 
