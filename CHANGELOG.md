@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.5.0
+- Configure the package to work as a cli tool
+
 ## v0.4.0
 - Parse tags from Medium posts to frontmatter
 - Improve detection of dates vs strings in frontmatter
