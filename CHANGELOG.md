@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.5.1
+- Fix paths to the executible
+
 ## v0.5.0
 - Configure the package to work as a cli tool 
 

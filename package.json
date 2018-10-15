@@ -1,6 +1,6 @@
 {
   "name": "url-md-fs",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Enter an URL, convert it to Markdown, save it to the File system",
   "main": "src/index.js",
   "bin": {
