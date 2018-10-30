@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.5.3
+- Fix errors creating new directories
+
 ## v0.5.2
 - Really, really fix the executible this time
 
