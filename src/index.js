@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs-extra')
 const request = require('request')
 const processMarkdown = require('./utils/process-markdown')
 const extractFilename = require('./utils/extract-filename')
@@ -21,13 +21,12 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
 
         console.log(path.resolve(__dirname, outputPath, filename))
         if (outputPath) {
-          if (!fs.existsSync(path.resolve(__dirname, outputPath, filename))) {
-            fs.mkdirSync(path.resolve(__dirname, outputPath, filename))
-          }
-          fs.writeFileSync(
-            path.resolve(__dirname, outputPath, filename, 'index.md'),
-            asMarkdown
-          )
+          fs.mkdirp(path.resolve(__dirname, outputPath, filename), () => {
+            fs.writeFileSync(
+              path.resolve(__dirname, outputPath, filename, 'index.md'),
+              asMarkdown
+            )
+          })
         }
 
         resolve(asMarkdown)
