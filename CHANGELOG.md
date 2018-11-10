@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.7.0
+## v0.7.0 
 - Switch over to babel for compiling
 - Fix installation paths for downloads
 
