@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.7.0
+- Switch over to babel for compiling
+- Fix installation paths for downloads
+
+## v0.6.0
+- Fix installation errors
+
 ## v0.5.3
 - Fix errors creating new directories
 
