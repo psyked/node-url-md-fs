@@ -19,11 +19,11 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
         const asMarkdown = processMarkdown(body, { sourceURL, outputPath })
         const filename = extractFilename(sourceURL)
 
-        console.log(path.resolve(__dirname, outputPath, filename))
+        console.log(path.resolve(outputPath, filename))
         if (outputPath) {
-          fs.mkdirp(path.resolve(__dirname, outputPath, filename), () => {
+          fs.mkdirp(path.resolve(outputPath, filename), () => {
             fs.writeFileSync(
-              path.resolve(__dirname, outputPath, filename, 'index.md'),
+              path.resolve(outputPath, filename, 'index.md'),
               asMarkdown
             )
           })
@@ -37,7 +37,7 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
 }
 
 const inputURL = process.argv[2]
-const outputPath = process.argv[3] || path.resolve(__dirname, '../output/')
+const outputPath = process.argv[3] || path.resolve('../output/')
 
 if (!inputURL) {
   console.error('No URL specified')
