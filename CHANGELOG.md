@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.7.2
+- Change the default download directory to be the current directory, instead of ../output
+
 ## v0.7.1
 - Fix paths to the executible
 
