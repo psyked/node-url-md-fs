@@ -37,7 +37,7 @@ const convertURLToMarkdown = async (sourceURL, { outputPath } = {}) => {
 }
 
 const inputURL = process.argv[2]
-const outputPath = process.argv[3] || path.resolve('../output/')
+const outputPath = process.argv[3] || path.resolve('./')
 
 if (!inputURL) {
   console.error('No URL specified')
