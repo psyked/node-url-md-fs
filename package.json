@@ -2,11 +2,12 @@
   "name": "url-md-fs",
   "version": "0.6.0",
   "description": "Enter an URL, convert it to Markdown, save it to the File system",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "bin": {
     "url-md-fs": "./src/index.js"
   },
   "scripts": {
+    "build": "babel src -d lib --ignore src/**/*.spec.js",
     "test": "jest",
     "format": "prettier --write 'src/**/*.js'",
     "lint": "eslint .",
@@ -33,6 +34,9 @@
   },
   "homepage": "https://github.com/psyked/node-url-md-fs#readme",
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
     "eslint": "^5.1.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",
